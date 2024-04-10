@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oakdigital/datafordeler.git"
+    "url": "git+https://github.com/oak-digital/datafordeler.git"
   },
   "author": "oak-digital",
   "license": "ISC",
@@ -25,9 +25,9 @@
     "Datafordeler"
   ],
   "bugs": {
-    "url": "https://github.com/oakdigital/datafordeler.git/issues"
+    "url": "https://github.com/oak-digital/datafordeler.git/issues"
   },
-  "homepage": "https://github.com/oakdigital/datafordeler.git#readme",
+  "homepage": "https://github.com/oak-digital/datafordeler.git#readme",
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/node": "^15.12.5",
