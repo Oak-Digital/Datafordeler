@@ -7,9 +7,10 @@
     "baseUrl": ".",
     "outDir": "lib",
     "strict": true,
+    "noUncheckedIndexedAccess": true,
     "strictPropertyInitialization": true,
     "typeRoots": ["./node_modules/@types"],
-    "types": ["node", "@types/jest"],
+    "types": ["node"],
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true

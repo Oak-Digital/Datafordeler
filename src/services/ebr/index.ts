@@ -1,2 +1,2 @@
-export * from "./ebr";
+export * from "./Ebr";
 export * from "./models";

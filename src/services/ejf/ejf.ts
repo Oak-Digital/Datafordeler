@@ -22,22 +22,49 @@ export class EJF extends Service {
   async ejerskabMedStamoplysninger(
     params: EjerskabMedStamoplysninger.Request
   ): Promise<EjerskabMedStamoplysninger.Response> {
+    const methodInfo = EJF.Methods.EjerskabMedStamoplysninger;
+    if (!methodInfo) {
+      throw new Error(
+        "Method information for 'EjerskabMedStamoplysninger' is undefined."
+      );
+    }
     return await this.Request<EjerskabMedStamoplysninger.Response>(
-      EJF.Methods.EjerskabMedStamoplysninger,
+      methodInfo,
       params
     );
   }
 
-  async handelsoplysning(params: Handelsoplysninger.Request): Promise<Handelsoplysninger.Response> {
-    return await this.Request<Handelsoplysninger.Response>(EJF.Methods.Handelsoplysninger, params);
+  async handelsoplysning(
+    params: Handelsoplysninger.Request
+  ): Promise<Handelsoplysninger.Response> {
+    const methodInfo = EJF.Methods.Handelsoplysninger;
+    if (!methodInfo) {
+      throw new Error(
+        "Method information for 'Handelsoplysninger' is undefined."
+      );
+    }
+
+    return await this.Request<Handelsoplysninger.Response>(methodInfo, params);
   }
 
   async ejerskifte(params: Ejerskifte.Request): Promise<Ejerskifte.Response> {
-    return await this.Request<Ejerskifte.Response>(EJF.Methods.Ejerskifte, params);
+    const methodInfo = EJF.Methods.Ejerskifte;
+    if (!methodInfo) {
+      throw new Error("Method information for 'Ejerskifte' is undefined.");
+    }
+
+    return await this.Request<Ejerskifte.Response>(methodInfo, params);
   }
 
-  async ejerskabsskifte(params: Ejerskabsskifte.Request): Promise<Ejerskabsskifte.Response> {
-    return await this.Request<Ejerskabsskifte.Response>(EJF.Methods.Ejerskabsskifte, params);
+  async ejerskabsskifte(
+    params: Ejerskabsskifte.Request
+  ): Promise<Ejerskabsskifte.Response> {
+    const methodInfo = EJF.Methods.Ejerskabsskifte;
+    if (!methodInfo) {
+      throw new Error("Method information for 'Ejerskabsskifte' is undefined.");
+    }
+
+    return await this.Request<Ejerskabsskifte.Response>(methodInfo, params);
   }
 
   static get Services(): ServiceObject {
@@ -48,30 +75,30 @@ export class EJF extends Service {
     });
   }
 
-  static get Methods(): MethodObject {
-    return Object.freeze({
+  static get Methods(): Readonly<MethodObject> {
+    return {
       EjerskabMedStamoplysninger: {
         zone: "cert5",
-        service: EJF.Services.Ejerfortegnelsen,
+        service: EJF.Services.Ejerfortegnelsen!,
         method: "EjerskabMedStamoplysninger",
       },
       Handelsoplysninger: {
         zone: "cert5",
-        service: EJF.Services.Ejerfortegnelsen,
+        service: EJF.Services.Ejerfortegnelsen!,
         method: "Handelsoplysning",
       },
       Ejerskifte: {
         zone: "cert5",
-        service: EJF.Services.Ejerfortegnelsen,
+        service: EJF.Services.Ejerfortegnelsen!,
         method: "Ejerskifte",
         version: "2.0.0", // Added version manuallly as Ejerskifte uses 2.0.0 and other methods in EJF uses 1.
       },
       Ejerskabsskifte: {
         zone: "cert5",
-        service: EJF.Services.Ejerfortegnelsen,
+        service: EJF.Services.Ejerfortegnelsen!,
         method: "Ejerskabsskifte",
-      },
-    });
+      } as const,
+    } as const;
   }
 }
 

@@ -12,15 +12,28 @@ export class EBR extends Service {
     super(config, "EBR", "rest");
   }
 
-  async bfeNrAdresse(params: BFEnrAdresse.Request): Promise<BFEnrAdresse.Response> {
-    return await this.Request<BFEnrAdresse.Response>(EBR.Methods.BFEnrAdresse, params);
+  async bfeNrAdresse(
+    params: BFEnrAdresse.Request
+  ): Promise<BFEnrAdresse.Response> {
+    const methodInfo = EBR.Methods.BFEnrAdresse;
+    if (!methodInfo) {
+      throw new Error("Method information for 'BFEnrAdresse' is undefined.");
+    }
+
+    return await this.Request<BFEnrAdresse.Response>(methodInfo, params);
   }
 
   async ejendomsbeliggenhed(
     params: EjendomsBeliggenhed.Request
   ): Promise<EjendomsBeliggenhed.ResponseFull> {
+    const methodInfo = EBR.Methods.Ejendomsbeliggenhed;
+    if (!methodInfo) {
+      throw new Error(
+        "Method information for 'Ejendomsbeliggenhed' is undefined."
+      );
+    }
     return await this.Request<EjendomsBeliggenhed.ResponseFull>(
-      EBR.Methods.Ejendomsbeliggenhed,
+      methodInfo,
       params
     );
   }
@@ -28,8 +41,14 @@ export class EBR extends Service {
   async ejendomsbeliggenhedSimpel(
     params: EjendomsBeliggenhed.Request
   ): Promise<EjendomsBeliggenhed.ResponseSimpel> {
+    const methodInfo = EBR.Methods.EjendomsbeliggenhedSimpel;
+    if (!methodInfo) {
+      throw new Error(
+        "Method information for 'EjendomsbeliggenhedSimpel' is undefined."
+      );
+    }
     return await this.Request<EjendomsBeliggenhed.ResponseSimpel>(
-      EBR.Methods.EjendomsbeliggenhedSimpel,
+      methodInfo,
       params
     );
   }
@@ -40,23 +59,23 @@ export class EBR extends Service {
     });
   }
 
-  static get Methods(): MethodObject {
-    return Object.freeze({
+  static get Methods(): Readonly<MethodObject> {
+    return {
       BFEnrAdresse: {
         zone: "public_protected",
-        service: EBR.Services.Ejendomsbeliggenhed,
+        service: EBR.Services.Ejendomsbeliggenhed!,
         method: "BFEnrAdresse",
-      },
+      } as const,
       Ejendomsbeliggenhed: {
         zone: "public_protected",
-        service: EBR.Services.Ejendomsbeliggenhed,
+        service: EBR.Services.Ejendomsbeliggenhed!,
         method: "Ejendomsbeliggenhed",
-      },
+      } as const,
       EjendomsbeliggenhedSimpel: {
         zone: "public_protected",
-        service: EBR.Services.Ejendomsbeliggenhed,
+        service: EBR.Services.Ejendomsbeliggenhed!,
         method: "EjendomsbeliggenhedSimpel",
-      },
-    });
+      } as const,
+    } as const;
   }
 }

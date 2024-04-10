@@ -7,6 +7,8 @@ import {
   BygningResponse,
   EjendomsrelationRequest,
   EjendomsrelationResponse,
+  BbrsagRequest,
+  BbrsagResponse,
 } from "./models";
 
 export class BBR extends Service {
@@ -23,40 +25,79 @@ export class BBR extends Service {
    */
 
   async enhed(params: EnhedRequest): Promise<EnhedResponse> {
-    return await this.Request<EnhedResponse>(BBR.Methods.Enhed, params);
+    const methodInfo = BBR.Methods.Enhed;
+    if (!methodInfo) {
+      throw new Error("Method information for 'Enhed' is undefined.");
+    }
+
+    return await this.Request<EnhedResponse>(methodInfo, params);
   }
 
   async bygning(params: BygningRequest): Promise<BygningResponse> {
-    return await this.Request<BygningResponse>(BBR.Methods.Bygning, params);
+    const methodInfo = BBR.Methods.Bygning;
+
+    if (!methodInfo) {
+      throw new Error("Method information for 'Bygning' is undefined.");
+    }
+
+    return await this.Request<BygningResponse>(methodInfo, params);
   }
 
-  async ejendomsrelation(params: EjendomsrelationRequest): Promise<EjendomsrelationResponse> {
-    return await this.Request<EjendomsrelationResponse>(BBR.Methods.Ejendomsrelation, params);
+  async ejendomsrelation(
+    params: EjendomsrelationRequest
+  ): Promise<EjendomsrelationResponse> {
+    const methodInfo = BBR.Methods.Ejendomsrelation;
+
+    if (!methodInfo) {
+      throw new Error(
+        "Method information for 'Ejendomsrelation' is undefined."
+      );
+    }
+
+    return await this.Request<EjendomsrelationResponse>(methodInfo, params);
   }
 
-  static get Services(): ServiceObject {
-    return Object.freeze({
+  async bbrsag(params: BbrsagRequest): Promise<BbrsagResponse> {
+    const methodInfo = BBR.Methods.Bbrsag;
+    if (!methodInfo) {
+      throw new Error("Method information for 'Bbrsag' is undefined.");
+    }
+    return await this.Request<BbrsagResponse>(methodInfo, params);
+  }
+
+  static get Services(): Readonly<ServiceObject> {
+    return {
       BBRPublic: "BBRPublic",
-    });
+    } as const;
   }
 
-  static get Methods(): MethodObject {
-    return Object.freeze({
+  static get Methods(): Readonly<MethodObject> {
+    return {
       Enhed: {
         zone: "public_protected",
-        service: BBR.Services.BBRPublic,
+        service: BBR.Services.BBRPublic!,
         method: "enhed",
-      },
+      } as const,
       Bygning: {
         zone: "public_protected",
-        service: BBR.Services.BBRPublic,
+        service: BBR.Services.BBRPublic as string,
         method: "bygning",
-      },
+      } as const,
       Ejendomsrelation: {
         zone: "public_protected",
-        service: BBR.Services.BBRPublic,
+        service: BBR.Services.BBRPublic as string,
         method: "ejendomsrelation",
-      },
-    });
+      } as const,
+      Bbrsag: {
+        zone: "public_protected",
+        service: BBR.Services.BBRPublic as string,
+        method: "bbr",
+      } as const,
+      Grund: {
+        zone: "public_protected",
+        service: BBR.Services.BBRPublic as string,
+        method: "grund",
+      } as const,
+    };
   }
 }

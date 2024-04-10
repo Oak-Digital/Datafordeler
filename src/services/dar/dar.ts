@@ -15,7 +15,11 @@ export class DAR extends Service {
    * @return {array} Returns array of addresses
    */
   async getAdresse(params: adresseRequest): Promise<adresseResponse[]> {
-    return await this.Request<adresseResponse[]>(DAR.Methods.adresse, params);
+    const methodInfo = DAR.Methods.adresse;
+    if (!methodInfo) {
+      throw new Error("Method information for 'adresse' is undefined.");
+    }
+    return await this.Request<adresseResponse[]>(methodInfo, params);
   }
 
   static get Services(): ServiceObject {
@@ -25,14 +29,14 @@ export class DAR extends Service {
     });
   }
 
-  static get Methods(): MethodObject {
-    return Object.freeze({
+  static get Methods(): Readonly<MethodObject> {
+    return {
       adresse: {
         zone: "public",
-        service: DAR.Services.DAR,
+        service: DAR.Services.DAR!,
         method: "adresse",
       },
-    });
+    } as const;
   }
 }
 
