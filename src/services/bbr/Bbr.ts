@@ -9,6 +9,8 @@ import {
   EjendomsrelationResponse,
   BbrsagRequest,
   BbrsagResponse,
+  GrundResponse,
+  GrundRequest,
 } from "./models";
 
 export class BBR extends Service {
@@ -55,6 +57,14 @@ export class BBR extends Service {
     }
 
     return await this.Request<EjendomsrelationResponse>(methodInfo, params);
+  }
+
+  async grund(params: GrundRequest): Promise<GrundResponse> {
+    const methodInfo = BBR.Methods.Grund;
+    if (!methodInfo) {
+      throw new Error("Method information for 'Grund' is undefined.");
+    }
+    return await this.Request<GrundResponse>(methodInfo, params);
   }
 
   async bbrsag(params: BbrsagRequest): Promise<BbrsagResponse> {

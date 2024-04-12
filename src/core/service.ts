@@ -41,6 +41,7 @@ export class Service {
 
   protected async Request<T>(opt: MethodInfo, params: Parameters): Promise<T> {
     let url = this.buildUrl(opt, params);
+    console.log("url", url);
     let config: fetchRequestInit = {};
 
     if (opt.zone === "public_protected") {
@@ -124,7 +125,9 @@ export class Service {
     return Object.keys(parameters)
       .map((key) => {
         const valueIsArray = Array.isArray(parameters[key]);
-        const value = valueIsArray ? parameters[key].join("|") : parameters[key];
+        const value = valueIsArray
+          ? parameters[key].join("|")
+          : parameters[key];
         return `${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
       })
       .join("&");
