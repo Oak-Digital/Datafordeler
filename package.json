@@ -1,7 +1,7 @@
 {
   "name": "@oak-digital/datafordeler",
-  "version": "0.11.3",
-  "description": "Unofficial SDK for Datafordeler API Fork of HelloAgent/datafordeler",
+  "version": "0.11.4",
+  "description": "Unofficial SDK for Datafordeler API Fork of HelloAgent/datafordeler maintained by Oak Digital",
   "main": "lib/datafordeler.js",
   "types": "lib/datafordeler.d.ts",
   "scripts": {
