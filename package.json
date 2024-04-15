@@ -1,6 +1,6 @@
 {
   "name": "@oak-digital/datafordeler",
-  "version": "0.11.2",
+  "version": "0.11.3",
   "description": "Unofficial SDK for Datafordeler API Fork of HelloAgent/datafordeler",
   "main": "lib/datafordeler.js",
   "types": "lib/datafordeler.d.ts",
@@ -11,7 +11,8 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "version": "git add -A src",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "release": "bumpp"
   },
   "repository": {
     "type": "git",
