@@ -6,7 +6,7 @@ import { AdresseSchema } from "./types/Adresse.schema";
 import { husnummerRequest } from "./models/husmmer";
 import { HusnummerSchema } from "./types/Husnummer.schema";
 import { HusnummerTilBygningBfeRequest } from "./models/husnummerTilBygningBfe";
-import { HusnummerTilBygningBfeSchema } from "./types/HusnummerTilbygningBfe";
+import { HusnummerTilBygningBfeSchema } from "./types/HusnummerTilbygningBfe.schema";
 import { adresseTileEnhedBfeRequest } from "./models/adresseTilEnhedBfe";
 
 export class DAR extends Service {
