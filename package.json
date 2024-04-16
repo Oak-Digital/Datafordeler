@@ -12,8 +12,8 @@
     "lint": "tslint -p tsconfig.json",
     "version": "git add -A src",
     "postversion": "git push && git push --tags",
-    "bumpp": "pnpm i -D bumpp",
-    "release": "bumpp"
+    "release": "bumpp",
+    "generate-types-bbr": "json2ts -i './src/services/bbr/schema/**/*.schema.json' -o ./src/services/bbr/types"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "@types/node-fetch": "^2.5.8",
     "bumpp": "^9.4.0",
     "jest": "^29.0.0",
-    "json-schema-to-typescript": "^10.1.4",
+    "json-schema-to-typescript": "^10.1.5",
     "rimraf": "^3.0.2",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.4"

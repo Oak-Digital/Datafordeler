@@ -2,16 +2,16 @@ import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
 import {
   EnhedRequest,
-  EnhedResponse,
   BygningRequest,
-  BygningResponse,
   EjendomsrelationRequest,
-  EjendomsrelationResponse,
-  BbrsagRequest,
-  BbrsagResponse,
-  GrundResponse,
   GrundRequest,
+  BBRSagRequest,
 } from "./models";
+import { BBRSagSchema } from "./types/BBRSag.schema";
+import { BygningSchema } from "./types/Bygning.schema";
+import { EjendomsRelationSchema } from "./types/EjendomsRelation.schema";
+import { EnhedSchema } from "./types/Enhed.schema";
+import { GrundSchema } from "./types/Grund.schema";
 
 export class BBR extends Service {
   static Register = "BBR";
@@ -26,28 +26,28 @@ export class BBR extends Service {
    * @return {array} Returns array of addresses
    */
 
-  async enhed(params: EnhedRequest): Promise<EnhedResponse> {
+  async enhed(params: EnhedRequest): Promise<EnhedSchema> {
     const methodInfo = BBR.Methods.Enhed;
     if (!methodInfo) {
       throw new Error("Method information for 'Enhed' is undefined.");
     }
 
-    return await this.Request<EnhedResponse>(methodInfo, params);
+    return await this.Request<EnhedSchema>(methodInfo, params);
   }
 
-  async bygning(params: BygningRequest): Promise<BygningResponse> {
+  async bygning(params: BygningRequest): Promise<BygningSchema> {
     const methodInfo = BBR.Methods.Bygning;
 
     if (!methodInfo) {
       throw new Error("Method information for 'Bygning' is undefined.");
     }
 
-    return await this.Request<BygningResponse>(methodInfo, params);
+    return await this.Request<BygningSchema>(methodInfo, params);
   }
 
   async ejendomsrelation(
     params: EjendomsrelationRequest
-  ): Promise<EjendomsrelationResponse> {
+  ): Promise<EjendomsRelationSchema> {
     const methodInfo = BBR.Methods.Ejendomsrelation;
 
     if (!methodInfo) {
@@ -56,23 +56,23 @@ export class BBR extends Service {
       );
     }
 
-    return await this.Request<EjendomsrelationResponse>(methodInfo, params);
+    return await this.Request<EjendomsRelationSchema>(methodInfo, params);
   }
 
-  async grund(params: GrundRequest): Promise<GrundResponse> {
+  async grund(params: GrundRequest): Promise<GrundSchema> {
     const methodInfo = BBR.Methods.Grund;
     if (!methodInfo) {
       throw new Error("Method information for 'Grund' is undefined.");
     }
-    return await this.Request<GrundResponse>(methodInfo, params);
+    return await this.Request<GrundSchema>(methodInfo, params);
   }
 
-  async bbrsag(params: BbrsagRequest): Promise<BbrsagResponse> {
+  async bbrsag(params: BBRSagRequest): Promise<BBRSagSchema> {
     const methodInfo = BBR.Methods.Bbrsag;
     if (!methodInfo) {
       throw new Error("Method information for 'Bbrsag' is undefined.");
     }
-    return await this.Request<BbrsagResponse>(methodInfo, params);
+    return await this.Request<BBRSagSchema>(methodInfo, params);
   }
 
   static get Services(): Readonly<ServiceObject> {
