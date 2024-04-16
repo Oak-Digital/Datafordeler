@@ -151,21 +151,3 @@ export interface Husnummer {
   };
   postnummer: Postnummer;
 }
-
-export interface adresseResponse {
-  datafordelerOpdateringstid: string;
-  adressebetegnelse: string;
-  dørbetegnelse: string;
-  etagebetegnelse: string;
-  forretningshændelse: string;
-  forretningsområde: string;
-  forretningsproces: string;
-  id_lokalId: string;
-  id_namespace: string;
-  registreringFra: string;
-  registreringsaktør: string;
-  status: string;
-  virkningFra: string;
-  virkningsaktør: string;
-  husnummer: Husnummer;
-}

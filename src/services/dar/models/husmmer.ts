@@ -1,0 +1,40 @@
+export interface husnummerRequest {
+  Id?: string;
+  Status?: string; // 2 | 3 | 4 | 5
+  AdgangTilBygning?: string;
+  GeoDanmarkBygning?: string;
+  AdgangTilTekniskAnlaeg?: string;
+  Jordstykke?: string;
+  ForeloebigtJordStykke?: string;
+  Adresse?: string;
+  NavngivenVej?: string;
+  Kommunekode?: string;
+  Vejkode?: string;
+  Vejmidte?: number;
+  NavngivenVejKommunedel?: string;
+  Postnor?: string;
+  Postnummer?: string;
+  Postnummerinddeling?: string;
+  SupplerendeBynavnDAR?: string;
+  SupplerendeBynavnDAGI?: string;
+  Afstennungsomraade?: string;
+  Sogneinddeling?: string;
+  Kommuneinddeling?: string;
+  Menighedsraadsafstemningsomraade?: string;
+  Nord?: string;
+  Oest?: string;
+  Svend?: string;
+  Vest?: string;
+  VirkningFra?: string;
+  VirkningTil?: string;
+  RegistreringFra?: string;
+  RegistreringTil?: string;
+  DAFTimestampFra?: string;
+  DAFTimestampTil?: string;
+  Virkningaktoer?: string;
+  Registreringaktoer?: string;
+  Forretningsprocess?: string;
+  Forretningsomraade?: string;
+  Forretningshaendelse?: string;
+  MedDybde?: boolean;
+}

@@ -1,5 +1,5 @@
 export interface GrundRequest {
-  id: string;
+  id?: string;
   VirkningFra?: Date;
   VirkningTil?: Date;
   Virkningsaktoer?: string;

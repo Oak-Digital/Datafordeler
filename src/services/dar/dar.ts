@@ -1,6 +1,10 @@
 import { Service } from "../../core";
 import { clientInit, ServiceObject, MethodObject } from "../../core/types";
-import { adresseRequest, adresseResponse, adresse } from "./types";
+import { AdresseTilEnhedBfeSchema } from "./types/AdresseTilEnhedBfe.schema";
+import { adresseRequest } from "./models/adresse";
+import { AdresseSchema } from "./types/Adresse.schema";
+import { husnummerRequest } from "./models/husmmer";
+import { HusnummerSchema } from "./types/Husnummer.schema";
 
 export class DAR extends Service {
   static Register = "DAR";
@@ -10,36 +14,42 @@ export class DAR extends Service {
     super(config, "DAR", "rest");
   }
 
-  async adresseV2(params: adresseRequest): Promise<adresseResponse[]> {
+  async adresseV2(params: adresseRequest): Promise<AdresseSchema[]> {
     const methodInfo = DAR.Methods.adresse;
     console.log("methodInfo", methodInfo);
     if (!methodInfo) {
       throw new Error("Method information for 'adresse' is undefined.");
     }
 
-    return this.Request<adresseResponse[]>(methodInfo, params);
+    return this.Request<AdresseSchema[]>(methodInfo, params);
   }
 
-  /**
-   * @depreciated
-   * Get an DAR address object
-   * @param {string} [Id] - the dar id for the address
-   * @return {array} Returns array of addresses
-   */
-  async getAdresse(params: adresseRequest): Promise<adresseResponse[]> {
-    const methodInfo = DAR.Methods.adresse;
+  async adresseTilEnhedBfe(
+    params: adresseRequest
+  ): Promise<AdresseTilEnhedBfeSchema[]> {
+    const methodInfo = DAR.Methods.adresseTilEnhedBfe;
     if (!methodInfo) {
       throw new Error("Method information for 'adresse' is undefined.");
     }
-    return await this.Request<adresseResponse[]>(methodInfo, params);
+    return await this.Request<AdresseTilEnhedBfeSchema[]>(methodInfo, params);
   }
 
-  async adresse(params: adresseRequest): Promise<adresseResponse[]> {
-    const methodInfo = DAR.Methods.adresse;
+  async husnummerTilBygningBfe(
+    params: adresseRequest
+  ): Promise<AdresseTilEnhedBfeSchema[]> {
+    const methodInfo = DAR.Methods.husnummerTilBygningBfe;
     if (!methodInfo) {
       throw new Error("Method information for 'adresse' is undefined.");
     }
-    return await this.Request<adresseResponse[]>(methodInfo, params);
+    return await this.Request<AdresseTilEnhedBfeSchema[]>(methodInfo, params);
+  }
+
+  async husnummer(params: husnummerRequest): Promise<HusnummerSchema[]> {
+    const methodInfo = DAR.Methods.husnummer;
+    if (!methodInfo) {
+      throw new Error("Method information for 'husnummer' is undefined.");
+    }
+    return await this.Request<HusnummerSchema[]>(methodInfo, params);
   }
 
   static get Services() {
@@ -64,18 +74,24 @@ export class DAR extends Service {
         method: "adresse",
         version: "2.0.0",
       },
+      adresseTilEnhedBfe: {
+        zone: "public",
+        service: DAR.Services.DAR_BFE_Public.service,
+        method: "adresseTilEnhedBfe",
+        version: "1",
+      },
+      husnummerTilBygningBfe: {
+        zone: "public",
+        service: DAR.Services.DAR_BFE_Public.service,
+        method: "husnummerTilBygningBfe",
+        version: "1",
+      },
+      husnummer: {
+        zone: "public",
+        service: DAR.Services.DAR.service,
+        method: "husnummer",
+        version: "2.0.0",
+      },
     } as const;
   }
 }
-
-/**  Experimenting - not in use */
-// interface DarServiceObject extends ServiceObject {
-//   DAR: "DAR";
-//   DAR_BFE_Public: "DAR_BFE_Public";
-// }
-
-// interface DarMethodObject extends MethodObject {
-//   adresse: { zone: "public"; service: ""; method: "" };
-// }
-
-// import Buffer from "buffer"
