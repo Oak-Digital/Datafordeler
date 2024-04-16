@@ -17,45 +17,45 @@ export class DAR extends Service {
     super(config, "DAR", "rest");
   }
 
-  async adresseV2(params: adresseRequest): Promise<AdresseSchema[]> {
+  async adresseV2(params: adresseRequest): Promise<AdresseSchema> {
     const methodInfo = DAR.Methods.adresse;
-    console.log("methodInfo", methodInfo);
+    // console.log("methodInfo", methodInfo);
     if (!methodInfo) {
       throw new Error("Method information for 'adresse' is undefined.");
     }
 
-    return this.Request<AdresseSchema[]>(methodInfo, params);
+    return this.Request<AdresseSchema>(methodInfo, params);
   }
 
   async adresseTilEnhedBfe(
     params: adresseTileEnhedBfeRequest
-  ): Promise<AdresseTilEnhedBfeSchema[]> {
+  ): Promise<AdresseTilEnhedBfeSchema> {
     const methodInfo = DAR.Methods.adresseTilEnhedBfe;
     if (!methodInfo) {
       throw new Error("Method information for 'adresse' is undefined.");
     }
-    return await this.Request<AdresseTilEnhedBfeSchema[]>(methodInfo, params);
+    return await this.Request<AdresseTilEnhedBfeSchema>(methodInfo, params);
   }
 
   async husnummerTilBygningBfe(
     params: HusnummerTilBygningBfeRequest
-  ): Promise<HusnummerTilBygningBfeSchema[]> {
+  ): Promise<HusnummerTilBygningBfeSchema> {
     const methodInfo = DAR.Methods.husnummerTilBygningBfe;
     if (!methodInfo) {
       throw new Error("Method information for 'adresse' is undefined.");
     }
-    return await this.Request<HusnummerTilBygningBfeSchema[]>(
+    return await this.Request<HusnummerTilBygningBfeSchema>(
       methodInfo,
       params
     );
   }
 
-  async husnummer(params: husnummerRequest): Promise<HusnummerSchema[]> {
+  async husnummer(params: husnummerRequest): Promise<HusnummerSchema> {
     const methodInfo = DAR.Methods.husnummer;
     if (!methodInfo) {
       throw new Error("Method information for 'husnummer' is undefined.");
     }
-    return await this.Request<HusnummerSchema[]>(methodInfo, params);
+    return await this.Request<HusnummerSchema>(methodInfo, params);
   }
 
   static get Services() {
