@@ -12,7 +12,6 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "version": "git add -A src",
-    "postversion": "git push && git push --tags",
     "release": "bumpp",
     "generate-types-bbr": "json2ts -i './src/services/bbr/schema/**/*.schema.json' -o ./src/services/bbr/types",
     "generate-types-dar": "json2ts -i './src/services/dar/schema/**/*.schema.json' -o ./src/services/dar/types"
