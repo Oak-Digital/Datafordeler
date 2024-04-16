@@ -5,6 +5,9 @@ import { adresseRequest } from "./models/adresse";
 import { AdresseSchema } from "./types/Adresse.schema";
 import { husnummerRequest } from "./models/husmmer";
 import { HusnummerSchema } from "./types/Husnummer.schema";
+import { HusnummerTilBygningBfeRequest } from "./models/husnummerTilBygningBfe";
+import { HusnummerTilBygningBfeSchema } from "./types/HusnummerTilbygningBfe";
+import { adresseTileEnhedBfeRequest } from "./models/adresseTilEnhedBfe";
 
 export class DAR extends Service {
   static Register = "DAR";
@@ -25,7 +28,7 @@ export class DAR extends Service {
   }
 
   async adresseTilEnhedBfe(
-    params: adresseRequest
+    params: adresseTileEnhedBfeRequest
   ): Promise<AdresseTilEnhedBfeSchema[]> {
     const methodInfo = DAR.Methods.adresseTilEnhedBfe;
     if (!methodInfo) {
@@ -35,13 +38,16 @@ export class DAR extends Service {
   }
 
   async husnummerTilBygningBfe(
-    params: adresseRequest
-  ): Promise<AdresseTilEnhedBfeSchema[]> {
+    params: HusnummerTilBygningBfeRequest
+  ): Promise<HusnummerTilBygningBfeSchema[]> {
     const methodInfo = DAR.Methods.husnummerTilBygningBfe;
     if (!methodInfo) {
       throw new Error("Method information for 'adresse' is undefined.");
     }
-    return await this.Request<AdresseTilEnhedBfeSchema[]>(methodInfo, params);
+    return await this.Request<HusnummerTilBygningBfeSchema[]>(
+      methodInfo,
+      params
+    );
   }
 
   async husnummer(params: husnummerRequest): Promise<HusnummerSchema[]> {
