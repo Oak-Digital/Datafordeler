@@ -8,6 +8,7 @@
     "test": "jest",
     "dev": "tsc -w",
     "build": "tsc",
+    "prebuild": "rimraf lib",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "version": "git add -A src",
@@ -38,7 +39,7 @@
     "bumpp": "^9.4.0",
     "jest": "^29.0.0",
     "json-schema-to-typescript": "^10.1.5",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.5",
     "ts-jest": "^29.1.2",
     "typescript": "^5.4.4"
   },

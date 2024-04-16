@@ -1,4 +1,4 @@
-import { Husnummer, adresseResponse as Adresse } from "../../dar/types";
+import { Husnummer, adresseResponse as Adresse } from "../../dar/old.types";
 
 export declare namespace EjendomsBeliggenhed {
   export interface Request {
@@ -16,7 +16,10 @@ export declare namespace EjendomsBeliggenhed {
     | "ejerhenvendelse"
     | "konverteretFraESR";
 
-  export type Forretningsproces = "automatiskBeregnet" | "manueltOpdateret" | "konverteretFraESR";
+  export type Forretningsproces =
+    | "automatiskBeregnet"
+    | "manueltOpdateret"
+    | "konverteretFraESR";
 
   export interface EjendomsBeliggenhedBasis {
     id_namespace: string;
