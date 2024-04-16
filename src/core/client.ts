@@ -16,10 +16,22 @@ export class Client {
   #username?: string;
   #password?: string;
 
+  public readonly BBR: BBR;
+  public readonly EJF: EJF;
+  public readonly EBR: EBR;
+  public readonly Events: Haendelser;
+  public readonly DAR: DAR;
+
   constructor(config?: clientInit) {
     this.#username = config?.username || "";
     this.#password = config?.password || "";
     this.#agent = config?.agent;
+
+    this.BBR = new BBR(this.Auth);
+    this.EJF = new EJF(this.Auth);
+    this.EBR = new EBR(this.Auth);
+    this.DAR = new DAR(this.Auth);
+    this.Events = new Haendelser(this.Auth);
   }
 
   /**
@@ -49,50 +61,5 @@ export class Client {
       username: this.#username,
       password: this.#password,
     };
-  }
-
-  /**
-   * Create a new DAR client
-   * @params none
-   * @return DAR client
-   */
-  DAR() {
-    return new DAR(this.Auth);
-  }
-
-  /**
-   * Create a new Ejerfortegnelse client
-   * @params none
-   * @return EJF client
-   */
-  EJF() {
-    return new EJF(this.Auth);
-  }
-
-  /**
-   * Create a new Bbr client
-   * @params none
-   * @return BBR client
-   */
-  BBR() {
-    return new BBR(this.Auth);
-  }
-
-  /**
-   * Create a new EjendomsbeliggenhedsRegister client
-   * @params none
-   * @return EBR client
-   */
-  EBR() {
-    return new EBR(this.Auth);
-  }
-
-  /**
-   * Create a new Events client
-   * @params none
-   * @return Event client
-   */
-  Events() {
-    return new Haendelser(this.Auth);
   }
 }
