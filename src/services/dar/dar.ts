@@ -81,13 +81,13 @@ export class DAR extends Service {
         version: "2.0.0",
       },
       adresseTilEnhedBfe: {
-        zone: "public",
+        zone: "public_protected",
         service: DAR.Services.DAR_BFE_Public.service,
         method: "adresseTilEnhedBfe",
         version: "1",
       },
       husnummerTilBygningBfe: {
-        zone: "public",
+        zone: "public_protected",
         service: DAR.Services.DAR_BFE_Public.service,
         method: "husnummerTilBygningBfe",
         version: "1",

@@ -41,7 +41,7 @@ export class Service {
 
   protected async Request<T>(opt: MethodInfo, params: Parameters): Promise<T> {
     let url = this.buildUrl(opt, params);
-    console.log("url", url);
+    // console.log("url", url);
     let config: fetchRequestInit = {};
 
     if (opt.zone === "public_protected") {
